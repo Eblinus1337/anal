@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Обменник — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="exchange">
+
+<section class="section" id="exchange" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">P2P-обмен · атомарные свопы</span>
+      <h2>Обменник</h2>
+      <p>Меняйте крипту напрямую между кошельками. Средства либо меняются, либо возвращаются —
+      обмануть контракт невозможно по определению.</p>
+    </div>
+
+    <div class="exchange-grid reveal">
+      <div>
+        <div class="offers-head">
+          <div class="pair-filter" id="pairFilter">
+            <button class="active" data-pair="all">Все пары</button>
+            <button data-pair="USDT → BTC">USDT → BTC</button>
+            <button data-pair="USDT → ETH">USDT → ETH</button>
+            <button data-pair="USDT → SOL">USDT → SOL</button>
+            <button data-pair="BTC → USDT">BTC → USDT</button>
+          </div>
+          <button class="btn btn-primary btn-sm" style="margin-left:auto;" onclick="openOfferModal()">+ Создать оффер</button>
+        </div>
+        <table class="offer-table">
+          <thead>
+            <tr><th>Продавец</th><th>Курс</th><th>Лимиты</th><th></th></tr>
+          </thead>
+          <tbody id="offersBody"></tbody>
+        </table>
+      </div>
+
+      <aside class="swap-info">
+        <h3><span class="ico">⚡</span>Атомарный своп (HTLC)</h3>
+        <p>Обмен проходит через Hash Time-Locked Contract — контракт с секретом и дедлайном.
+        Гарант здесь не нужен вовсе: либо обе стороны получают свои монеты, либо каждому возврат.</p>
+        <div class="htlc mono">
+          <div class="htlc-row"><span class="tag a">вы</span> блокируете USDT <span class="arr">→</span></div>
+          <div class="htlc-row"><span class="tag b">контракт</span> ждёт preimage-секрет <span class="arr">→</span></div>
+          <div class="htlc-row"><span class="tag a">продавец</span> блокирует BTC <span class="arr">→</span></div>
+          <div class="htlc-row"><span class="tag b">контракт</span> секрет раскрыт → обе выплаты <span class="arr">✓</span></div>
+        </div>
+        <ul class="mini-steps">
+          <li><span class="check">✓</span>Без посредников и депозитов на платформу</li>
+          <li><span class="check">✓</span>Дедлайн: по истечении — автоматический возврат</li>
+          <li><span class="check">✓</span>Комиссия платформы всего 0.8%</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="modal-back" id="swapModal">
+  <div class="modal">
+    <h3>Подтвердить обмен</h3>
+    <p class="modal-sub" id="swapInfo"></p>
+    <div class="htlc mono" style="margin-bottom:16px;" id="swapCalc"></div>
+    <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="closeSwap()">Заблокировать USDT на HTLC-контракте</button>
+    <button class="modal-close" onclick="closeSwap()">Отмена</button>
+  </div>
+</div>
+
+<div class="modal-back" id="offerModal">
+  <div class="modal">
+    <h3>Создать оффер обмена</h3>
+    <p class="modal-sub">Ваш оффер появится в списке после подтверждения транзакцией.</p>
+    <label style="display:block; font-size:13px; color:var(--muted); margin-bottom:6px;">Отдаёте</label>
+    <input id="offerGive" placeholder="1000 USDT" style="width:100%; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; color:var(--text); font:inherit; margin-bottom:14px;">
+    <label style="display:block; font-size:13px; color:var(--muted); margin-bottom:6px;">Получаете</label>
+    <input id="offerGet" placeholder="0.014 BTC" style="width:100%; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; color:var(--text); font:inherit; margin-bottom:20px;">
+    <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="createOffer()">Опубликовать оффер</button>
+    <button class="modal-close" onclick="closeOfferModal()">Отмена</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

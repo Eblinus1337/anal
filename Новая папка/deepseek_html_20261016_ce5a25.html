@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Кабинет — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="cabinet">
+
+<section class="section" id="cabinet" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Личный кабинет</span>
+      <h2>Кабинет</h2>
+      <p>Ваши заказы, объявления и сборы. Все средства — в вашем кошельке, платформа видит только статусы.</p>
+    </div>
+
+    <div class="cab-grid reveal">
+      <aside class="cab-profile">
+        <div class="cab-avatar">В</div>
+        <h3>ВитёкКрипто</h3>
+        <div class="wallet-addr mono">0x8F3a…41dE09b2</div>
+        <div class="verify-badge">✓ Кошелёк верифицирован on-chain</div>
+        <div class="cab-rating">
+          <div><div class="cr-v">4.97</div><div class="cr-l">рейтинг</div></div>
+          <div><div class="cr-v">214</div><div class="cr-l">сделок</div></div>
+          <div><div class="cr-v">3 120</div><div class="cr-l">репутация</div></div>
+        </div>
+        <div class="cab-balance">
+          <div class="b-row"><span class="muted">В кошельке</span><b>12 480 USDT</b></div>
+          <div class="b-row"><span class="muted">В эскроу</span><b class="yellow">2 300 USDT</b></div>
+          <div class="b-row"><span class="muted">Доступно к выводу</span><b class="green">10 180 USDT</b></div>
+        </div>
+      </aside>
+
+      <div class="cab-main">
+        <div class="cab-tabs">
+          <button class="cab-tab active" data-pane="orders">Мои заказы</button>
+          <button class="cab-tab" data-pane="listings">Мои объявления</button>
+          <button class="cab-tab" data-pane="funds">Мои сборы</button>
+          <button class="cab-tab" data-pane="notifs">Уведомления <span style="color:var(--red);">3</span></button>
+        </div>
+        <div class="cab-body">
+          <div class="cab-pane active" id="pane-orders">
+            <div class="order-row">
+              <div><div class="o-title">Аккаунт Steam · 120 игр</div><div class="o-meta">GameVault · #4471 · депонировано вчера</div></div>
+              <span class="o-hash-col mono muted" style="font-size:12px;">0x7a2f…9cE1</span>
+              <span class="o-sum">14 500 USDT</span>
+              <span class="status escrow">в эскроу</span>
+            </div>
+            <div class="order-row">
+              <div><div class="o-title">Обмен USDT → BTC</div><div class="o-meta">SatoshiTrade · HTLC-своп · сегодня</div></div>
+              <span class="o-hash-col mono muted" style="font-size:12px;">0x31bd…04Aa</span>
+              <span class="o-sum">3 200 USDT</span>
+              <span class="status done">выполнен</span>
+            </div>
+            <div class="order-row">
+              <div><div class="o-title">Телеграм-бот на Python</div><div class="o-meta">заказ от МистерИкс · #4519</div></div>
+              <span class="o-hash-col mono muted" style="font-size:12px;">0x94d1…22B8</span>
+              <span class="o-sum">15 000 USDT</span>
+              <span class="status done">выполнен</span>
+            </div>
+          </div>
+
+          <div class="cab-pane" id="pane-listings">
+            <div class="order-row">
+              <div><div class="o-title">Обмен USDT → ETH · курс 0.000271</div><div class="o-meta">оффер #88 · активен с 10 октября</div></div>
+              <span class="o-sum">лимит 100–50 000</span>
+              <span class="status done">активен</span>
+            </div>
+            <div class="order-row">
+              <div><div class="o-title">Лендинг на чистом HTML/CSS/JS</div><div class="o-meta">услуга · 41 просмотр за неделю</div></div>
+              <span class="o-sum">9 900 USDT</span>
+              <span class="status done">активен</span>
+            </div>
+            <div class="order-row">
+              <div><div class="o-title">Скины CS2 · коллекция из 12 предметов</div><div class="o-meta">продано · 2 сделки</div></div>
+              <span class="o-sum">—</span>
+              <span class="status resolved">архив</span>
+            </div>
+          </div>
+
+          <div class="cab-pane" id="pane-funds">
+            <div class="order-row">
+              <div><div class="o-title">«Народная база продавцов»</div><div class="o-meta">ваш сбор · этап 1 из 2</div></div>
+              <span class="o-sum">6 400 / 12 000 USDT</span>
+              <span class="status escrow">53% · в работе</span>
+            </div>
+            <div class="order-row">
+              <div><div class="o-title">Neon Drift (бэкер)</div><div class="o-meta">поддержали вы · этап 2 подтверждён</div></div>
+              <span class="o-sum">150 USDT</span>
+              <span class="status done">этап подтверждён</span>
+            </div>
+          </div>
+
+          <div class="cab-pane" id="pane-notifs">
+            <div class="notif-row">
+              <span class="n-ico" style="background:rgba(255,184,77,.12);">⚠</span>
+              <div>По сделке #4471 продавец запросил автовыплату. У вас есть 12 часов на проверку аккаунта.</div>
+              <span class="n-time">10 мин назад</span>
+            </div>
+            <div class="notif-row">
+              <span class="n-ico" style="background:rgba(0,210,168,.12);">✓</span>
+              <div>Этап «Арт и анимации» сбора Neon Drift подтверждён бэкерами — выплата автору выполнена.</div>
+              <span class="n-time">2 часа назад</span>
+            </div>
+            <div class="notif-row">
+              <span class="n-ico" style="background:rgba(108,92,231,.15);">◈</span>
+              <div>HTLC-своп с SatoshiTrade завершён: 0.0451 BTC поступили на ваш кошелёк.</div>
+              <span class="n-time">сегодня</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

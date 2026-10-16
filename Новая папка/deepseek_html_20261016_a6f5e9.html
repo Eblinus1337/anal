@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>ChainDeal — сделки под защитой смарт-контракта</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="home">
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge"><span class="dot"></span>2 847 сделок в эскроу прямо сейчас</div>
+      <h1>Сделки без посредников.<br>Деньги под защитой <span class="grad">смарт-контракта</span></h1>
+      <p class="sub">Обмен, услуги и сборы с автоматическим эскроу. Средства не покидают блокчейн —
+      платформа лишь подписывает решения при спорах. Публичный код, публичные транзакции, ноль скрытых комиссий.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openModal()">Начать сделку</button>
+        <a class="btn btn-ghost" href="how.html">Как это работает</a>
+      </div>
+      <div class="hero-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00d2a8" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+        Аудит контрактов пройден. Верифицированный исходный код на GitHub.
+      </div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-head">
+        <h3>Живая лента сделок</h3>
+        <span class="feed-live">live · сеть Base</span>
+      </div>
+      <div class="feed-list" id="feedList"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><div class="val">$<span data-count="4281500">0</span></div><div class="lbl">Общий объём сделок</div></div>
+    <div class="stat"><div class="val"><span data-count="184203">0</span></div><div class="lbl">Сделок выполнено</div></div>
+    <div class="stat"><div class="val"><span data-count="97">0</span>%</div><div class="lbl">Без диспутов</div></div>
+    <div class="stat"><div class="val"><span data-count="6">0</span> ч</div><div class="lbl">Среднее время решения диспута</div></div>
+  </div>
+</section>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

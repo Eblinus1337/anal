@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Как это работает — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="how">
+
+<section class="section" id="how" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Эскроу на смарт-контракте</span>
+      <h2>Как это работает</h2>
+      <p>Средства покупателя блокируются на публичном контракте и не принадлежат никому —
+      ни платформе, ни продавцу — до подтверждения сделки.</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Депозит на контракт</h3>
+        <p>Покупатель отправляет средства на эскроу-контракт. Это обычная транзакция в сети Base — платформа деньги не видит.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Исполнение заказа</h3>
+        <p>Продавец видит залог на контракте и приступает к работе. Условия зафиксированы в чате сделки.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Подтверждение</h3>
+        <p>Покупатель подтверждает приёмку. Если молчит — сработает автовыплата через 72 часа.</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Мгновенная выплата</h3>
+        <p>Контракт отправляет средства продавцу за вычетом комиссии. Никаких ручных выводов и ожиданий.</p>
+      </div>
+    </div>
+
+    <div class="dispute reveal">
+      <div>
+        <h3>Если случился диспут</h3>
+        <p class="lead">Смарт-контракт не может сам решить, кто прав — для этого нужен человек.
+        Арбитры платформы рассматривают доказательства из чата сделки и подписывают решение мультисигом.
+        Контракт исполняет его автоматически. История всех решений — публична.</p>
+        <div class="arb-steps">
+          <div class="arb-step"><span class="n">1</span><span><b>Подача доказательств.</b> Стороны прикладывают скриншоты и переписку из чата сделки.</span></div>
+          <div class="arb-step"><span class="n">2</span><span><b>Рассмотрение.</b> Арбитры платформы изучают материалы, срок — до 24 часов.</span></div>
+          <div class="arb-step"><span class="n">3</span><span><b>Мультисиг-решение.</b> 2 из 3 подписей арбитров направляют средства победителю.</span></div>
+        </div>
+      </div>
+      <div class="contract-demo mono" aria-label="упрощённый код контракта">
+<div class="cm">// Escrow.sol — сеть Base, верифицирован</div>
+<span class="kw">contract</span> Escrow {
+  <span class="kw">address</span> buyer;  <span class="cm">// покупатель</span>
+  <span class="kw">address</span> seller; <span class="cm">// продавец</span>
+  <span class="kw">uint256</span> amount; <span class="cm">// залог в USDT</span>
+
+  <span class="kw">function</span> <span class="fn">confirm</span>() {
+    <span class="cm">// покупатель подтверждает приёмку</span>
+    seller.<span class="fn">transfer</span>(amount * 95 / 100);
+  }
+
+  <span class="kw">function</span> <span class="fn">resolveDispute</span>(
+    <span class="kw">bytes</span>[] sigs   <span class="cm">// 2 из 3 подписей арбитров</span>
+  ) { <span class="cm">/* выплата по решению */</span> }
+}
+      </div>
+    </div>
+
+    <div class="fees reveal">
+      <table>
+        <thead>
+          <tr><th>Операция</th><th>Комиссия</th><th>Примечание</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Обмен (атомарный своп)</td><td class="fee">0.8%</td>
+            <td><span class="muted-note">средства либо меняются, либо возвращаются — без гаранта</span></td>
+          </tr>
+          <tr>
+            <td>Сделка на маркетплейсе</td><td class="fee">5%</td>
+            <td><span class="muted-note">держит эскроу + арбитраж + защита покупателя</span></td>
+          </tr>
+          <tr>
+            <td>Депозит в сбор</td><td class="fee">4%</td>
+            <td><span class="muted-note">только если сбор достиг цели и этап подтверждён</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

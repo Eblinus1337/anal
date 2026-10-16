@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Сборы — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="funds">
+
+<section class="section" id="funds" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Kickstarter с гарантом</span>
+      <h2>Сборы</h2>
+      <p>Автор получает деньги не вперёд, а по этапам: каждая выплата с эскроу происходит
+      только после подтверждения бэкерами выполнения этапа. Провалил — остаток возвращается.</p>
+    </div>
+
+    <div class="funds-grid reveal" id="fundsGrid"></div>
+
+    <div class="create-fund-note reveal">
+      Хотите собрать средства на проект? <b>Создать сбор</b> — бесплатно, комиссия 4%
+      только при успешном достижении цели.
+    </div>
+  </div>
+</section>
+
+<div class="modal-back" id="fundModal">
+  <div class="modal" style="max-width: 460px;">
+    <h3 id="fundTitle"></h3>
+    <p class="modal-sub" id="fundDesc"></p>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="fundFill"></div></div>
+      <div class="progress-row">
+        <span class="pv" id="fundRaised"></span>
+        <span class="pg" id="fundPct"></span>
+        <span class="pt2" id="fundGoal"></span>
+      </div>
+    </div>
+    <div class="fund-stats">
+      <div class="fund-stat"><div class="v" id="fundBackers"></div><div class="l">бэкеров</div></div>
+      <div class="fund-stat"><div class="v" id="fundDays"></div><div class="l">дней осталось</div></div>
+      <div class="fund-stat"><div class="v">4%</div><div class="l">комиссия</div></div>
+    </div>
+    <div class="milestone-list" id="fundMilestones"></div>
+    <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="closeFund()">Поддержать проект</button>
+    <button class="modal-close" onclick="closeFund()">Закрыть</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

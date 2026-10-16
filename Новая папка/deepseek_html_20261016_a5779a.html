@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Диспуты — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="disputes">
+
+<section class="section" id="disputes" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Арбитраж гаранта</span>
+      <h2>Диспуты</h2>
+      <p>Когда стороны не договорились — в игру вступает гарант. Доказательства из чата сделки,
+      мультисиг-решение арбитров, публичная история прецедентов.</p>
+    </div>
+
+    <div class="disputes-grid reveal">
+      <div>
+        <div style="margin-bottom:18px;"><button class="btn btn-danger" onclick="openDisputeModal()">⚠ Открыть диспут по сделке</button></div>
+
+        <div class="dispute-card">
+          <div class="dc-head">
+            <span class="dc-id mono">#4521</span>
+            <span class="dc-title">Продавец не передал данные аккаунта после депозита</span>
+            <span class="status review">на рассмотрении</span>
+          </div>
+          <div class="dc-parties">
+            <span class="avatar" style="width:24px;height:24px;font-size:11px;background:#e17055;">ДК</span> DarkKnight
+            <span class="vs">VS</span>
+            <span class="avatar" style="width:24px;height:24px;font-size:11px;background:#6c5ce7;">ГВ</span> GameVault
+          </div>
+          <div class="dc-foot">
+            <span class="dc-sum">14 500 USDT</span>
+            <span class="status done">доказательства загружены</span>
+            <span class="dc-deadline">решение до 23:00</span>
+          </div>
+        </div>
+
+        <div class="dispute-card">
+          <div class="dc-head">
+            <span class="dc-id mono">#4518</span>
+            <span class="dc-title">Спор о качестве: буст выполнен не до конца</span>
+            <span class="status review">на рассмотрении</span>
+          </div>
+          <div class="dc-parties">
+            <span class="avatar" style="width:24px;height:24px;font-size:11px;background:#00b894;">РР</span> RankUp
+            <span class="vs">VS</span>
+            <span class="avatar" style="width:24px;height:24px;font-size:11px;background:#0984e3;">ММ</span> МистерИкс
+          </div>
+          <div class="dc-foot">
+            <span class="dc-sum">12 500 USDT</span>
+            <span class="status escrow">ждём ответ продавца</span>
+            <span class="dc-deadline">решение до 02:30</span>
+          </div>
+        </div>
+
+        <div class="dispute-card" style="border-left-color: var(--green);">
+          <div class="dc-head">
+            <span class="dc-id mono">#4512</span>
+            <span class="dc-title">Аккаунт оказался с баном — средства возвращены покупателю</span>
+            <span class="status resolved">решён</span>
+          </div>
+          <div class="dc-parties">
+            <span class="avatar" style="width:24px;height:24px;font-size:11px;background:#e84393;">СВ</span> СтарLord
+            <span class="vs">VS</span>
+            <span class="avatar" style="width:24px;height:24px;font-size:11px;background:#fdcb6e; color:#333;">ФК</span> FastCash
+          </div>
+          <div class="dc-foot">
+            <span class="dc-sum">8 200 USDT</span>
+            <span class="status resolved">выплачено покупателю · мультисиг 2/3</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="resolve-panel">
+        <h3>Как решаются споры</h3>
+        <p class="rp-sub">От диспута до выплаты — не более 24 часов в медиане.</p>
+        <div class="resolve-step">
+          <span class="rn">1</span>
+          <div><div class="rt">Доказательства</div>
+          <div class="rd">Стороны прикладывают материалы: скриншоты, переписку из чата сделки, хеши транзакций.</div></div>
+        </div>
+        <div class="resolve-step">
+          <span class="rn">2</span>
+          <div><div class="rt">Рассмотрение арбитрами</div>
+          <div class="rd">3 арбитра платформы изучают доказательства независимо друг от друга.</div></div>
+        </div>
+        <div class="resolve-step">
+          <span class="rn">3</span>
+          <div><div class="rt">Мультисиг-решение 2 из 3</div>
+          <div class="rd">Два подписанта направляют средства победителю. Контракт исполняет автоматически — отменить нельзя.</div></div>
+        </div>
+        <div class="precedent">
+          <div class="ph">✓ Прецедент #4512 — возврат покупателю</div>
+          <p>Продавец не предоставил доказательств чистоты аккаунта в течение 12 часов.
+          Диспут решён в пользу покупателя в полном объёме. Решение записано on-chain.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="modal-back" id="disputeModal">
+  <div class="modal">
+    <h3>Открыть диспут</h3>
+    <p class="modal-sub">Укажите сделку и опишите проблему. Средства остаются на эскроу до решения.</p>
+    <label style="display:block; font-size:13px; color:var(--muted); margin-bottom:6px;">ID сделки</label>
+    <input placeholder="например, #4521" style="width:100%; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; color:var(--text); font:inherit; margin-bottom:14px;">
+    <label style="display:block; font-size:13px; color:var(--muted); margin-bottom:6px;">Описание проблемы</label>
+    <textarea placeholder="Что случилось? Что вы ожидали получить?" rows="3" style="width:100%; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; color:var(--text); font:inherit; resize:vertical; margin-bottom:14px;"></textarea>
+    <label style="display:block; font-size:13px; color:var(--muted); margin-bottom:6px;">Доказательства (ссылки на скриншоты, хеши)</label>
+    <input placeholder="https://..., 0x..." style="width:100%; background:var(--bg2); border:1px solid var(--border); border-radius:10px; padding:12px 14px; color:var(--text); font:inherit; margin-bottom:20px;">
+    <button class="btn btn-danger" style="width:100%; justify-content:center;" onclick="closeDisputeModal()">Отправить на рассмотрение гаранту</button>
+    <button class="modal-close" onclick="closeDisputeModal()">Отмена</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

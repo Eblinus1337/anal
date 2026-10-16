@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Маркетплейс — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="market">
+
+<section class="section" id="market" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Сделки под гарантом</span>
+      <h2>Маркетплейс</h2>
+      <p>Покупайте аккаунты, данные и услуги: деньги блокируются на эскроу-контракте и уходят
+      продавцу только после вашего подтверждения. В споре решает гарант — сайт.</p>
+    </div>
+
+    <div class="market-toolbar reveal">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="marketSearch" placeholder="Поиск: аккаунт, буст, дизайн...">
+      </div>
+      <span class="escrow-badge">каждая сделка — под защитой эскроу</span>
+    </div>
+
+    <div class="cats reveal" id="cats">
+      <button class="cat active" data-cat="all"><span class="ci">✦</span>Все</button>
+      <button class="cat" data-cat="Аккаунты"><span class="ci">👤</span>Аккаунты</button>
+      <button class="cat" data-cat="Игровые товары"><span class="ci">🎮</span>Игровые товары</button>
+      <button class="cat" data-cat="Данные и доступы"><span class="ci">🔑</span>Данные и доступы</button>
+      <button class="cat" data-cat="Услуги"><span class="ci">⚙️</span>Услуги</button>
+      <button class="cat" data-cat="Дизайн"><span class="ci">🎨</span>Дизайн</button>
+      <button class="cat" data-cat="Разработка"><span class="ci">💻</span>Разработка</button>
+    </div>
+
+    <div class="goods reveal" id="goodsGrid"></div>
+  </div>
+</section>
+
+<div class="modal-back" id="orderModal">
+  <div class="modal" style="max-width: 460px;">
+    <h3>Оформление заказа</h3>
+    <p class="modal-sub" id="orderTitle"></p>
+
+    <div class="order-steps">
+      <div class="order-step">
+        <div class="rail"><span class="pt">1</span><span class="line"></span></div>
+        <div class="os-body">
+          <div class="os-title">Депозит на эскроу-контракт</div>
+          <div class="os-text">Вы отправляете средства на публичный контракт в сети Base.
+          Сайт и продавец их не контролируют.</div>
+        </div>
+      </div>
+      <div class="order-step">
+        <div class="rail"><span class="pt">2</span><span class="line"></span></div>
+        <div class="os-body">
+          <div class="os-title">Передача товара в чате сделки</div>
+          <div class="os-text">Продавец передаёт аккаунт / данные / результат. Вся переписка —
+          доказательство на случай диспута.</div>
+        </div>
+      </div>
+      <div class="order-step">
+        <div class="rail"><span class="pt">3</span><span class="line"></span></div>
+        <div class="os-body">
+          <div class="os-title">Ваше подтверждение</div>
+          <div class="os-text">Проверили — подтверждаете. Или открываете диспут, и гарант
+          распределяет средства по доказательствам.</div>
+        </div>
+      </div>
+      <div class="order-step">
+        <div class="rail"><span class="pt">4</span></div>
+        <div class="os-body">
+          <div class="os-title">Мгновенная выплата продавцу</div>
+          <div class="os-text">Контракт отправляет средства автоматически. Автовыплата — через 72 часа.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <div class="r"><span>Сумма сделки</span><span id="orderPrice"></span></div>
+      <div class="r"><span>Комиссия гаранта (5%)</span><span id="orderFee"></span></div>
+      <div class="r total"><span>К депозиту</span><span class="green" id="orderTotal"></span></div>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="closeOrder()">Задепонировать на эскроу-контракт</button>
+    <button class="modal-close" onclick="closeOrder()">Отмена</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

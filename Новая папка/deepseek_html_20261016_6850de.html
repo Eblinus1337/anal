@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d12">
+<title>Контракт-чейн — ChainDeal</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="chain">
+
+<section class="section" id="chain" style="border-top:none; padding-top:160px;">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Полная прозрачность</span>
+      <h2>Контракт-чейн</h2>
+      <p>Каждая сделка платформы — публичная транзакция. Лента обновляется в реальном времени,
+      код контрактов верифицирован и открыт.</p>
+    </div>
+
+    <div class="chain-grid reveal">
+      <div class="chain-feed">
+        <div class="feed-head">
+          <h3>Эксплорер сделок · сеть Base</h3>
+          <span class="feed-live">live</span>
+        </div>
+        <div class="tx-list" id="txList"></div>
+      </div>
+
+      <div class="contracts-panel">
+        <div class="audit-banner">
+          <span class="shield">🛡</span>
+          <div>
+            <div class="at">Аудит пройден · CertiK, октябрь 2026</div>
+            <div class="as">0 критических находок · исходный код открыт на GitHub</div>
+          </div>
+        </div>
+
+        <div class="contract-card">
+          <h4>Контракты платформы <span class="ok">✓ верифицированы</span></h4>
+          <div class="addr-row">
+            <span class="addr mono">Escrow.sol → 0x8f3a…41dE09b2</span>
+            <button onclick="copyAddr(this)">копировать</button>
+          </div>
+          <div class="addr-row">
+            <span class="addr mono">HTLC Swap → 0x21bc…7Fa03C11</span>
+            <button onclick="copyAddr(this)">копировать</button>
+          </div>
+          <div class="addr-row">
+            <span class="addr mono">Milestone Fund → 0x94d1…22B8eA47</span>
+            <button onclick="copyAddr(this)">копировать</button>
+          </div>
+        </div>
+
+        <div class="reserve-card">
+          <div class="rl">Резерв гаранта на контракте</div>
+          <div class="rv" id="reserveVal">0 USDT</div>
+          <div class="rs">Проверяется on-chain: любой может вызвать reserve() на контракте</div>
+        </div>
+
+        <div class="chain-stats">
+          <div class="chain-stat"><div class="v" id="statTx">0</div><div class="l">транзакций всего</div></div>
+          <div class="chain-stat"><div class="v" id="statContracts">3</div><div class="l">контракта</div></div>
+          <div class="chain-stat"><div class="v">100%</div><div class="l">код открыт</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
